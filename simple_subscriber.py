@@ -4,7 +4,11 @@ from std_msgs.msg import Float32
 import math
 
 def callback(data):
-    rospy.loginfo(rospy.get_caller_id() + "I heard %s", data.data)
+    pub = rospy.Publisher('random_float_log', Float32)
+    log_num = math.log(data.data)
+    rospy.loginfo(log_num)
+    pub.publish(log_num)
+    
 
 def listener():
     #Initialize node
@@ -14,21 +18,9 @@ def listener():
 
     rospy.spin()
 
-def talker():
-    pub = rospy.Publisher('random_float_log', Float32)
-    rate = rospy.Rate(20)
-
-    while not rospy.is_shutdown():
-        log_num = math.log(5) #replace w real thing
-
-        rospy.loginfo(log_num)
-        pub.publish(log_num)
-        rate.sleep()
 
 if __name__ == '__main__':
-    listener()
-
     try:
-        talker()
+        listener()
     except rospy.ROSInterruptException:
         pass
