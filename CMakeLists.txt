@@ -162,6 +162,8 @@ include_directories(
  catkin_install_python(PROGRAMS
    simple_publisher.py
    simple_subscriber.py
+   fake_scan_publisher.py
+   open_space_publisher.py
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
  )
 
