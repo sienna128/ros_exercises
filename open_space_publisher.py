@@ -8,7 +8,9 @@ import math
 def callback(data):
     #pub_d = rospy.Publisher('open_space/distance', Float32)
     #pub_a = rospy.Publisher('open_space/angle', Float32)
-    pub_m = rospy.Publisher('open_space', OpenSpace)
+    pub_t = rospy.get_param("publisher_topic", "open_space")
+
+    pub_m = rospy.Publisher(pub_t, OpenSpace)
     msg = OpenSpace()
 
     ls = data
@@ -39,10 +41,11 @@ def listener():
     #Initialize node
     rospy.init_node('open_space_publisher', anonymous = True)
 
+    sub = rospy.get_param("subscriber_topic", "fake_scan")
     rate = rospy.Rate(20) # 20hz
 
     while not rospy.is_shutdown():
-        rospy.Subscriber('fake_scan', LaserScan, callback)
+        rospy.Subscriber(sub, LaserScan, callback)
 
         rospy.spin()
 
