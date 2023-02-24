@@ -10,7 +10,7 @@ def callback(data):
     #pub_a = rospy.Publisher('open_space/angle', Float32)
     pub_t = rospy.get_param("publisher_topic", "open_space")
 
-    pub_m = rospy.Publisher(pub_t, OpenSpace)
+    pub_m = rospy.Publisher(pub_t, OpenSpace, queue_size = 10)
     msg = OpenSpace()
 
     ls = data

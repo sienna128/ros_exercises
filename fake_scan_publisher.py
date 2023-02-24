@@ -20,7 +20,7 @@ def talker():
     rang_max = rospy.get_param("range_max", 10.0)
     ang_inc = rospy.get_param("angle_increment", (1.0 / 3000.0) * math.pi)
 
-    pub = rospy.Publisher(p_topic, LaserScan)
+    pub = rospy.Publisher(p_topic, LaserScan, queue_size = 10)
 
     rate = rospy.Rate(p_rate) # 20hz
 

@@ -1,0 +1,4 @@
+<launch>
+    <node name = "static_tf_cam_publisher" pkg="ros_exercises" type="static_tf_cam_publisher.py" />
+    <node name = "base_link_tf_pub" pkg="ros_exercises" type="base_link_tf_pub.py" />
+</launch>

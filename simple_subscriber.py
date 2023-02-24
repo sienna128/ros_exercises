@@ -4,7 +4,7 @@ from std_msgs.msg import Float32
 import math
 
 def callback(data):
-    pub = rospy.Publisher('random_float_log', Float32)
+    pub = rospy.Publisher('random_float_log', Float32, queue_size = 10)
     log_num = math.log(data.data)
     rospy.loginfo(log_num)
     pub.publish(log_num)
